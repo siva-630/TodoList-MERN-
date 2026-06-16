@@ -1,3 +1,12 @@
+# Dependencies
+node_modules/
+server/node_modules/
+to-client/node_modules/
+
+# Build output
+dist/
+to-client/dist/
+
 # Logs
 logs
 *.log
@@ -7,15 +16,14 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# Environment files
+.env
+.env.*
 
-# Editor directories and files
-.vscode/*
+# Editor / OS files
+.vscode/
 !.vscode/extensions.json
-.idea
+.idea/
 .DS_Store
 *.suo
 *.ntvs*
