@@ -16,18 +16,17 @@ export default function App() {
   const [editText, setEditText] = useState("");
 
   useEffect(() => {
+    async function loadTodos() {
+      try {
+        const data = await fetchTodos();
+        const mappedTasks = data.map(todo => ({ id: todo._id, text: todo.title, completed: todo.completed }));
+        setTasks(mappedTasks);
+      } catch (error) {
+        console.error("Failed to fetch todos", error);
+      }
+    }
     loadTodos();
   }, []);
-
-  const loadTodos = async () => {
-    try {
-      const data = await fetchTodos();
-      const mappedTasks = data.map(todo => ({ id: todo._id, text: todo.title, completed: todo.completed }));
-      setTasks(mappedTasks);
-    } catch (error) {
-      console.error("Failed to fetch todos", error);
-    }
-  };
 
   const remaining = tasks.filter((t) => !t.completed).length;
   const progress = tasks.length > 0 ? ((tasks.length - remaining) / tasks.length) * 100 : 0;

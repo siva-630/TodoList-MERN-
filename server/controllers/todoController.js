@@ -50,9 +50,9 @@ export const updateTodo = async (req, res) => {
     }
 
     // Update the todo with the new data from the request body
-    // The { new: true } option tells Mongoose to return the updated document
+    // The { returnDocument: 'after' } option tells Mongoose to return the updated document
     const updatedTodo = await Todo.findByIdAndUpdate(id, req.body, {
-      new: true,
+      returnDocument: 'after',
     });
 
     // Send the updated todo back to the client
