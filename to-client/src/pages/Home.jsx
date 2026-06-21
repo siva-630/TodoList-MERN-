@@ -2,6 +2,8 @@ import Navbar from "../components/Navbar";
 import TaskForm from "../components/TaskForm";
 import TaskList from "../components/TaskList";
 
+// The Home component acts as the main layout of our app.
+// It receives all the "props" (data and functions) from App.jsx and passes them down.
 const Home = ({
   greeting,
   tasks,
@@ -20,21 +22,19 @@ const Home = ({
   cancelEdit,
 }) => {
   return (
-    <div
-      className="min-h-screen w-full flex flex-col isolate items-center"
-      style={{
-        background: "linear-gradient(135deg, #faf8ff 0%, #f4f0ff 100%)",
-        fontFamily: "'Geist', sans-serif",
-      }}
-    >
+    // The main container with a full screen height and a subtle background gradient
+    <div className="min-h-screen w-full flex flex-col items-center bg-gray-50 font-sans">
+      {/* Top navigation bar */}
       <Navbar />
 
-      <div className="w-full max-w-[720px] px-4 sm:px-6 pt-10 pb-20 flex flex-col gap-8">
+      <div className="w-full max-w-2xl px-4 sm:px-6 pt-10 pb-20 flex flex-col gap-8">
+        
+        {/* Header section with the greeting and remaining tasks count */}
         <div className="flex flex-col gap-2">
-          <h1 className="text-[32px] font-semibold tracking-[-0.64px] text-[#131b2e] leading-tight">
+          <h1 className="text-3xl font-semibold tracking-tight text-gray-900 leading-tight">
             {greeting}
           </h1>
-          <p className="text-[16px] text-[#434655]">
+          <p className="text-base text-gray-600">
             {remaining === 0
               ? tasks.length === 0
                 ? "No tasks yet. Add one below."
@@ -43,15 +43,18 @@ const Home = ({
           </p>
         </div>
 
-        <div className="w-full h-[6px] bg-[#eaedff] rounded-full overflow-hidden">
+        {/* The visual progress bar that fills up as tasks are completed */}
+        <div className="w-full h-2 bg-blue-100 rounded-full overflow-hidden">
           <div
-            className="h-full bg-[#004ac6] rounded-full transition-all duration-500"
+            className="h-full bg-blue-700 rounded-full transition-all duration-500"
             style={{ width: `${progress}%` }}
           />
         </div>
 
+        {/* The form where users type a new task */}
         <TaskForm input={input} setInput={setInput} addTask={addTask} />
 
+        {/* The list that loops through all tasks and displays them */}
         <TaskList
           tasks={tasks}
           remaining={remaining}
