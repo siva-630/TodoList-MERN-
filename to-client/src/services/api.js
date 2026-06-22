@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // The base URL for our backend API. 
 // Uses the environment variable if deployed, otherwise falls back to local server.
-const API_URL = "https://todo-list-mern-vv1b.vercel.app/api/todos";
+const API_URL = "https://todo-list-mern-vv1b.vercel.app/";
 
 // Function to fetch all tasks from the database (GET request)
 export const fetchTodos = async () => {
