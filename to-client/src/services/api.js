@@ -1,7 +1,8 @@
 import axios from 'axios';
 
-// The base URL for our backend API running locally on port 5000
-const API_URL = 'http://localhost:5000/api/todos';
+// The base URL for our backend API. 
+// Uses the environment variable if deployed, otherwise falls back to local server.
+const API_URL = "https://todo-list-mern-vv1b.vercel.app";
 
 // Function to fetch all tasks from the database (GET request)
 export const fetchTodos = async () => {
@@ -30,4 +31,4 @@ export const deleteTodo = async (id) => {
   // Tells the server to delete the task with this specific ID
   const response = await axios.delete(`${API_URL}/${id}`);
   return response.data;
-};
+};
