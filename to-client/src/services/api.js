@@ -1,8 +1,10 @@
 import axios from 'axios';
 
 // The base URL for our backend API. 
-// Uses the environment variable if deployed, otherwise falls back to local server.
-const API_URL = "https://todo-list-mern-vv1b.vercel.app/";
+// Uses Vite's DEV mode to automatically switch between local server and deployed server!
+const API_URL = import.meta.env.DEV 
+  ? "http://localhost:5000/api/todos" 
+  : "https://todo-list-mern-vv1b.vercel.app/api/todos";
 
 // Function to fetch all tasks from the database (GET request)
 export const fetchTodos = async () => {
