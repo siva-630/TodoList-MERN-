@@ -8,7 +8,7 @@ const API_URL = "https://todo-list-mern-vv1b.vercel.app/";
 export const fetchTodos = async () => {
   // 'await' pauses the function until the server responds
   const response = await axios.get(API_URL);
-  // Return the data we got back from the server
+
   return response.data;
 };
 
